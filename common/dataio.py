@@ -32,7 +32,7 @@ class CogData:
         self.__defaults : dict[type[discord.abc.Snowflake] | str, tuple[TableDefault, ...]] = {}
         
     def __repr__(self) -> str:
-        return f'<CogDataInstance cog_name={self.cog_name!r}>'
+        return f'<CogData cog_name={self.cog_name!r}>'
     
     # --- Connexions ---
     
@@ -374,7 +374,7 @@ class DictTableDefault(TableDefault): # Pour les tables simplifiées de type cl�
 
         :param name: Nom de la table
         :param default_values: Valeurs par défaut à insérer dans la table
-        :param force_defaults: Si `True`, les valeurs sont réinsérées à chaque connexion si absentes
+        :param insert_on_reconnect: Si `True`, les valeurs sont réinsérées à chaque connexion si absentes
         """
         query = f'CREATE TABLE IF NOT EXISTS {name} (key TEXT PRIMARY KEY, value TEXT)'
         if not isinstance(default_values, dict):
